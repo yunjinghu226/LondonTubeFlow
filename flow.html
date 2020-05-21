@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <title>London Underground Peak Hour Flow</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+    <link href='styles.css' rel='stylesheet' />
+  </head>
+
+
+  <body>
+
+    <div id='map'></div>
+
+    <div class='map-overlay top'>
+      <div class='map-overlay-inner'>
+        <h2><font color='#cf4217'>London Underground AM Peak Flow</font></h2>
+        <p class="credit">Data: Rolling Origin & Destination Survey (RODS 2017) and Station Locations. Accessed from <a href="https://tfl.gov.uk/info-for/open-data-users/our-open-data?intcmp=3671">TfL</a>.</p>
+        <p class="credit">Click on the stations to hightlight the flows going <font color='#1639b6'><strong>in</strong></font> to the station and <font color='#700a0a'><strong>out</strong></font> from the station.</p>
+      </div>
+      <button class="collapsible"></button>
+        <div class="content">
+          <p>This interactive map is aimed to reveal a general pattern of the flows between London underground stations during the morning peak hours by visualizing the Origin-Destination matrix. The O-D matrix, an Excel file contained in the Rolling Origin & Destination Survey 2017 available from TfL, records the number of trips between every two stations during five different time periods in a typical weekday. Besides, the Stations Location CSV and KML files from TfL was also used. With Jupyter Notebook, the matrix were first cleaned to only keep the necessary attributes and drop entries with no trips between the two stations, and merged with the location data to geocode the start and end stations. After pre-processed, it was converted to line features with the XYtoLine tool in ArcGIS and points not involved in the flow map were removed from the station layer. Then the Shapefiles of flow lines and stations was added to Mapbox as tilesets and a style was created as base map. Finally an HTML file with CSS file were compiled to integrate the Mapbox layers, add functions and features, and adjust styles. </p>
+          <p>In the final product, by corresponding the amount of flows with the width and color of the lines, connections with greater flow and stations where more trips happening stand out with deeper color. Thus, a general pattern of where people move can be found that during the morning peak hours there is an overall trend of flows to the central London, while around central London the flows among stations are much greater and the pattern is more complex. Another feature of the map is that when clicking on the outer or inner circle of the station symbol, whose size is proportional to the total flows involving the station, either trips start from or end at the station will be highlighted. Therefore, the users can have a closer look at each station and get an idea of where passengers mainly come from or go to via certain station. Moreover, it can be also compared that how different the lines representing flow-in and flow-out are at each station. It was not surprising to find that for most stations around central London the flow-out lines are much thicker than the flow-in lines, which means there are more people going towards the centre during the morning peak hours, and this corresponds with the general trend.</p>
+        </div>
+    </div>
+
+    <script>
+
+      // collapsible setup
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.maxHeight){
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+          }
+        });
+      }
+      // display the basic flow-map
+      mapboxgl.accessToken = 'pk.eyJ1IjoiYWxleHlzaHUyMjYiLCJhIjoiY2puMzl0bzRrMmR5eDNwcXZ6YTk1b2x4MSJ9.YExeZS4oHiM3y4zZtiWO7g';
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/alexyshu226/cjt230csr1dza1fp1zyespl22',
+        center: [-0.127,51.517],
+        zoom: 10.75
+      });
+
+      // add functional features
+      map.on('load',function(){
+
+        // add tileset sources
+        map.addSource('flowline', {
+          "type": "vector",
+          "url": "mapbox://alexyshu226.ac43jo48"
+        });
+        map.addSource('stations', {
+          "type": "vector",
+          "url": "mapbox://alexyshu226.cfz3bd94"
+        });
+
+        // add station layers with proportional circles
+        map.addLayer({
+                id: 'Stations-out',
+                type: 'circle',
+                source: 'stations',
+                'source-layer': 'stations-akahp7', // name of tilesets
+                'layout': {
+                    'visibility': 'visible'
+                },
+                paint: {
+                    'circle-color': '#700a0a',
+                    'circle-opacity': 1,
+                    'circle-stroke-width': 0,
+                    'circle-stroke-color': '#000',
+                    'circle-stroke-opacity': 1,
+                    'circle-radius': {
+                        property: 'total_trip',
+                        stops: [
+                            [{zoom: 9, value: 196}, 2],
+                            [{zoom: 9, value: 50000}, 5],
+                            [{zoom: 10.5, value: 196}, 6],
+                            [{zoom: 10.5, value: 50000}, 12],
+                            [{zoom: 13.5, value: 196}, 20],
+                            [{zoom: 13.5, value: 50000}, 30],
+                        ]
+                    }
+                }
+        },'place-city-label-minor','place-city-label-major');
+
+        map.addLayer({
+                id: 'Stations-in',
+                type: 'circle',
+                source: 'stations',
+                'source-layer': 'stations-akahp7', // name of tilesets
+                'layout': {
+                    'visibility': 'visible'
+                },
+                paint: {
+                    'circle-color': '#1639b6',
+                    'circle-opacity': 1,
+                    'circle-stroke-width': 0,
+                    'circle-stroke-color': '#000',
+                    'circle-stroke-opacity': 1,
+                    'circle-radius': {
+                        property: 'total_trip',
+                        stops: [
+                            [{zoom: 9, value: 196}, 1],
+                            [{zoom: 9, value: 50000}, 2.5],
+                            [{zoom: 10.5, value: 196}, 4],
+                            [{zoom: 10.5, value: 50000}, 8],
+                            [{zoom: 13.5, value: 196}, 10],
+                            [{zoom: 13.5, value: 50000}, 15],
+                        ]
+                    }
+                }
+        },'place-city-label-minor','place-city-label-major');
+
+        // the three functions below add a popup function to display the information for each station
+        var mypopup = new mapboxgl.Popup({offset:[70,50],closeButton: false});
+        // event listener that adds the popup when the user puts their cursor over the station circles
+        map.on('mouseover', 'Stations-out', function (e) {
+                mypopup
+                    .setLngLat(e.features[0].geometry.coordinates)
+                    .setHTML("<h4>" + e.features[0].properties.Name + "</h4>")
+                    .addTo(map);
+        });
+        // Change the cursor to a pointer when the mouse is over the stations layer.
+        map.on('mouseenter', 'Stations-out', function () {
+              map.getCanvas().style.cursor = 'pointer';
+        });
+        // Change it back to a pointer when it leaves and remove the popup window.
+        map.on('mouseleave', 'Stations-out', function () {
+            map.getCanvas().style.cursor = '';
+            mypopup.remove();
+        });
+
+        // add two invisible flow layers
+        map.addLayer({
+                id: 'flowline-in',
+                type: 'line',
+                source: 'flowline',
+                'source-layer': 'flowlines-8snvig', // name of tilesets
+                paint: {
+                    'line-color': '#1639b6',
+                    'line-opacity': 0.5,
+                    'line-width': {
+                        property: 'AMpeak_tri',
+                        stops: [
+                            [{zoom: 10.5, value: 0}, 1],
+                            [{zoom: 10.5, value: 500}, 5],
+                        ]
+                    }
+                },
+                filter: ['==','destinatio','']
+        },'Stations-in','place-city-label-minor','place-city-label-major');
+
+        map.addLayer({
+                id: 'flowline-out',
+                type: 'line',
+                source: 'flowline',
+                'source-layer': 'flowlines-8snvig', // name of tilesets
+                paint: {
+                    'line-color': '#700a0a',
+                    'line-opacity': 0.5,
+                    'line-width': {
+                        property: 'AMpeak_tri',
+                        stops: [
+                            [{zoom: 10.5, value: 0}, 1],
+                            [{zoom: 10.5, value: 500}, 5],
+                        ]
+                    }
+                },
+                filter: ['==','origin_sta','']
+        },'Stations-out','Stations-in','place-city-label-minor','place-city-label-major');
+
+        // add click events
+        map.on('click', function(e) {
+          // get features under the cliked point
+          var features1 = map.queryRenderedFeatures(e.point, { layers: ['Stations-in'] });
+          var features2 = map.queryRenderedFeatures(e.point, { layers: ['Stations-out'] });
+          // Run through the selected features and set a filter to match features with station name to activate the `flowline-in` layer.
+          if (features1 != []) {
+            var filter = features1.reduce(function(memo, feature) {
+              memo.push(feature.properties.Name);
+              return memo;
+            }, ['==', 'destinatio']);
+            map.setFilter('flowline-in',['==','destinatio','']);
+            map.setFilter('flowline-out',['==','origin_sta','']);
+            map.setFilter("flowline-in",filter);
+          };
+          if (features1.length === 0 && features2 != []) {
+            var filter = features2.reduce(function(memo, feature) {
+              memo.push(feature.properties.Name);
+              return memo;
+            }, ['==', 'origin_sta']);
+            map.setFilter('flowline-in',['==','destinatio','']);
+            map.setFilter('flowline-out',['==','origin_sta','']);
+            map.setFilter("flowline-out",filter);
+          };
+          if (features2.length === 0) {
+            map.setFilter('flowline-in',['==','destinatio','']);
+            map.setFilter('flowline-out',['==','origin_sta','']);
+          };
+        });
+
+      });
+
+    </script>
+
+  </body>
+
+</html>

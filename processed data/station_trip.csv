@@ -1,0 +1,250 @@
+,station,total_trips
+0,Acton Town,4068
+1,Aldgate,8900
+2,Aldgate East,10536
+3,Alperton,1907
+4,Amersham,1489
+5,Angel,11896
+6,Archway,6947
+7,Arnos Grove,3299
+8,Arsenal,2318
+9,Baker Street,20667
+10,Balham,11669
+11,Barbican,9966
+12,Barking,15295
+13,Barkingside,1441
+14,Barons Court,6973
+15,Bayswater,1865
+16,Becontree,2605
+17,Belsize Park,4602
+18,Bermondsey,8461
+19,Bethnal Green,8812
+20,Blackfriars,15477
+21,Blackhorse Road,6918
+22,Bond Street,21428
+23,Borough,4726
+24,Boston Manor,1766
+25,Bounds Green,4704
+26,Bow Road,4642
+27,Brent Cross,1767
+28,Brixton,24259
+29,Bromley-by-Bow,3095
+30,Buckhurst Hill,1754
+31,Burnt Oak,3453
+32,Caledonian Road,4093
+33,Camden Town,10022
+34,Canada Water,29956
+35,Canary Wharf,54777
+36,Canning Town,22577
+37,Cannon Street,11053
+38,Canons Park,2619
+39,Chalk Farm,3329
+40,Chancery Lane,17022
+41,Charing Cross,11526
+42,Chesham,1075
+43,Chigwell,563
+44,Chiswick Park,1930
+45,Chorleywood,478
+46,Clapham Common,7035
+47,Clapham North,4440
+48,Clapham South,6699
+49,Cockfosters,1151
+50,Colindale,5624
+51,Colliers Wood,4864
+52,Covent Garden,4454
+53,Croxley,1215
+54,Dagenham East,2459
+55,Dagenham Heathway,4354
+56,Debden,2137
+57,Dollis Hill,3186
+58,Ealing Broadway,12609
+59,Ealing Common,2357
+60,East Acton,3041
+61,East Finchley,6407
+62,East Ham,9544
+63,East Putney,5868
+64,Eastcote,2441
+65,Edgware,4397
+66,Elm Park,3041
+67,Embankment,12904
+68,Epping,2585
+69,Euston,25610
+70,Euston Square,12260
+71,Fairlop,1110
+72,Farringdon,25216
+73,Finchley Central,6108
+74,Finchley Road,7145
+75,Finsbury Park,23214
+76,Fulham Broadway,7191
+77,Gants Hill,5098
+78,Gloucester Road,8148
+79,Golders Green,6143
+80,Goldhawk Road,1643
+81,Goodge Street,5912
+82,Grange Hill,616
+83,Great Portland Street,6690
+84,Green Park,29273
+85,Greenford,3051
+86,Gunnersbury,2542
+87,Hainault,2645
+88,Hampstead,3121
+89,Hanger Lane,2702
+90,Harlesden,1780
+91,Harrow-on-the-Hill,7571
+92,Hatton Cross,1946
+93,Heathrow Terminal 4,650
+94,Heathrow Terminal 5,1574
+95,Hendon Central,5787
+96,High Barnet,3950
+97,High Street Kensington,7724
+98,Highgate,4844
+99,Hillingdon,1663
+100,Holborn,22029
+101,Holland Park,2685
+102,Holloway Road,4417
+103,Hornchurch,2116
+104,Hounslow Central,2567
+105,Hounslow East,2217
+106,Hounslow West,1923
+107,Hyde Park Corner,2304
+108,Ickenham,1015
+109,Kennington,4415
+110,Kensal Green,1762
+111,Kensington (Olympia),196
+112,Kentish Town,7236
+113,Kenton,950
+114,Kew Gardens,2598
+115,Kilburn,6333
+116,Kilburn Park,2232
+117,Kingsbury,3527
+118,Knightsbridge,6638
+119,Ladbroke Grove,3873
+120,Lambeth North,1656
+121,Lancaster Gate,3648
+122,Latimer Road,1934
+123,Leicester Square,8958
+124,Leyton,8711
+125,Leytonstone,7867
+126,Liverpool Street,52879
+127,London Bridge,56565
+128,Loughton,3233
+129,Maida Vale,2429
+130,Manor House,5728
+131,Mansion House,7331
+132,Marble Arch,6348
+133,Marylebone,10123
+134,Mile End,10460
+135,Mill Hill East,1268
+136,Moor Park,1086
+137,Moorgate,42999
+138,Morden,8263
+139,Mornington Crescent,3898
+140,Neasden,2843
+141,Newbury Park,4228
+142,North Acton,5374
+143,North Ealing,642
+144,North Greenwich,16993
+145,North Harrow,1956
+146,North Wembley,1053
+147,Northfields,3018
+148,Northolt,3416
+149,Northwick Park,3555
+150,Northwood,3270
+151,Northwood Hills,1905
+152,Notting Hill Gate,9049
+153,Oakwood,1985
+154,Old Street,18648
+155,Osterley,1533
+156,Oval,5594
+157,Oxford Circus,45760
+158,Paddington,33514
+159,Park Royal,1486
+160,Parsons Green,6674
+161,Perivale,2127
+162,Piccadilly Circus,13420
+163,Pimlico,8631
+164,Pinner,3559
+165,Plaistow,4176
+166,Preston Road,3299
+167,Putney Bridge,4227
+168,Queensbury,3324
+169,Queensway,3616
+170,Ravenscourt Park,2903
+171,Rayners Lane,3466
+172,Redbridge,2152
+173,Richmond,6099
+174,Rickmansworth,2592
+175,Roding Valley,288
+176,Royal Oak,1880
+177,Ruislip,1629
+178,Ruislip Gardens,1034
+179,Ruislip Manor,1928
+180,Russell Square,6091
+181,Seven Sisters,19332
+182,Sloane Square,10924
+183,Snaresbrook,3353
+184,South Ealing,2498
+185,South Harrow,1436
+186,South Kensington,18649
+187,South Kenton,722
+188,South Ruislip,1691
+189,South Wimbledon,4245
+190,South Woodford,4173
+191,Southfields,5088
+192,Southgate,4048
+193,Southwark,16651
+194,St. James's Park,14382
+195,Stamford Brook,2330
+196,Stanmore,3398
+197,Stepney Green,4558
+198,Stockwell,9982
+199,Stonebridge Park,1404
+200,Stratford,56585
+201,Sudbury Hill,1349
+202,Sudbury Town,1319
+203,Swiss Cottage,6003
+204,Temple,7862
+205,Theydon Bois,761
+206,Tooting Bec,6928
+207,Tooting Broadway,11908
+208,Tottenham Court Road,20374
+209,Tottenham Hale,9094
+210,Tower Hill,15925
+211,Tufnell Park,3133
+212,Turnham Green,4468
+213,Turnpike Lane,6135
+214,Upminster,2145
+215,Upminster Bridge,1352
+216,Upney,2333
+217,Upton Park,6219
+218,Uxbridge,6486
+219,Vauxhall,23143
+220,Victoria,49971
+221,Walthamstow Central,11843
+222,Wanstead,2365
+223,Warren Street,17686
+224,Warwick Avenue,3218
+225,Waterloo,61642
+226,Watford,1837
+227,Wembley Central,2509
+228,Wembley Park,10383
+229,West Acton,1258
+230,West Brompton,3733
+231,West Finchley,1608
+232,West Ham,11081
+233,West Hampstead,10710
+234,West Harrow,1245
+235,West Kensington,3817
+236,West Ruislip,1026
+237,Westbourne Park,2746
+238,Westminster,17380
+239,White City,7577
+240,Whitechapel,17242
+241,Willesden Green,6525
+242,Willesden Junction,3332
+243,Wimbledon,8875
+244,Wimbledon Park,2026
+245,Wood Green,7310
+246,Wood Lane,1650
+247,Woodford,4812
+248,Woodside Park,2803
